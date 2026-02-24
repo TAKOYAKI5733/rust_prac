@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const itemNameInput = document.querySelector("#itemName");
+const itemAuthorInput = document.querySelector("#itemAuthor");
 const addBtn = document.querySelector("#addBtn");
 const itemList = document.querySelector("#itemList");
 const loadItems = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -18,18 +19,19 @@ const loadItems = () => __awaiter(void 0, void 0, void 0, function* () {
         itemList.innerHTML = "";
     items.forEach(item => {
         const li = document.createElement("li");
-        li.textContent = `${item.id}: ${item.name}`;
+        li.textContent = `${item.name}: ${item.author}`;
         itemList === null || itemList === void 0 ? void 0 : itemList.appendChild(li);
     });
 });
 addBtn === null || addBtn === void 0 ? void 0 : addBtn.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
     const name = itemNameInput === null || itemNameInput === void 0 ? void 0 : itemNameInput.value.trim();
-    if (!name)
+    const author = itemAuthorInput === null || itemAuthorInput === void 0 ? void 0 : itemAuthorInput.value.trim();
+    if (!name || !author)
         return;
     const res = yield fetch("https://web-app-prac.onrender.com/items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: Date.now(), name })
+        body: JSON.stringify({ id: Date.now(), name, author })
     });
     const result = yield res.json();
     if (itemNameInput)

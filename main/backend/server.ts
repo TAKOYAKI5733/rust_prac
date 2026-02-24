@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 interface Item {
   id: number;
   name: string;
+  author: string;
 }
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
