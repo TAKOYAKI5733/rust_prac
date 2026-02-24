@@ -1,18 +1,24 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "target": "ES6", // 出力されるJSのバージョン
+    "module": "ES6", // ES6モジュール方式
+    "outDir": "./dist", // コンパイル後のJS出力先
+    "rootDir": ".", // コンパイル対象のルート（現在のディレクトリ）
+    "strict": true, // 厳格な型チェック
+    "esModuleInterop": true, // import文の互換性
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node", // import解決方式
     "lib": [
-      "ES2020",
-      "DOM"
-    ],
-    "strict": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "sourceMap": true
+      "DOM",
+      "ES6"
+    ] // DOM操作とES6機能を使用可能
   },
   "include": [
-    "src"
-  ]
+    "script.ts"
+  ], // コンパイル対象ファイル
+  "exclude": [
+    "node_modules",
+    "dist"
+  ] // 除外するディレクトリ
 }

@@ -1,14 +1,15 @@
 import express, { Request, Response } from "express";
-import fs, { read, write } from "fs";
+import fs from "fs";
 import path from "path";
 import cors from "cors";
-import { resolve } from "dns";
-import { error } from "console";
+import { fileURLToPath } from "url";
 
 interface Item {
   id: number;
   name: string;
 }
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const DATA_FILE = path.join(__dirname, "DB.json");
 
