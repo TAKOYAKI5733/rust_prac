@@ -19,7 +19,7 @@ const loadItems = () => __awaiter(void 0, void 0, void 0, function* () {
         itemList.innerHTML = "";
     items.forEach(item => {
         const li = document.createElement("li");
-        li.textContent = `${item.name}: ${item.author}`;
+        li.textContent = `タイトル:${item.name} 著者:${item.author}`;
         itemList === null || itemList === void 0 ? void 0 : itemList.appendChild(li);
     });
 });

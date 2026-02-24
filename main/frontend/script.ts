@@ -15,7 +15,7 @@ const loadItems = async () => {
   if (itemList) itemList.innerHTML = "";
   items.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = `${item.name}: ${item.author}`;
+    li.textContent = `タイトル:${item.name} 著者:${item.author}`;
     itemList?.appendChild(li);
   });
 };
