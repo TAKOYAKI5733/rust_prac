@@ -8,7 +8,7 @@ const addBtn = document.querySelector<HTMLButtonElement>("#addBtn");
 const itemList = document.querySelector<HTMLUListElement>("#itemList");
 
 const loadItems = async () => {
-  const res = await fetch("http://localhost:3000/items");
+  const res = await fetch("https://web-app-prac.onrender.com/items");
   const items: Item[] = await res.json();
   if (itemList) itemList.innerHTML = "";
   items.forEach(item => {
@@ -21,7 +21,7 @@ const loadItems = async () => {
 addBtn?.addEventListener("click", async () => {
   const name = itemNameInput?.value.trim();
   if (!name) return;
-  const res = await fetch("http://localhost:3000/items", {
+  const res = await fetch("https://web-app-prac.onrender.com/items", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ id: Date.now(), name })

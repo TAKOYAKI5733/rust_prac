@@ -12,7 +12,7 @@ const itemNameInput = document.querySelector("#itemName");
 const addBtn = document.querySelector("#addBtn");
 const itemList = document.querySelector("#itemList");
 const loadItems = () => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield fetch("http://localhost:3000/items");
+    const res = yield fetch("https://web-app-prac.onrender.com/items");
     const items = yield res.json();
     if (itemList)
         itemList.innerHTML = "";
@@ -26,7 +26,7 @@ addBtn === null || addBtn === void 0 ? void 0 : addBtn.addEventListener("click",
     const name = itemNameInput === null || itemNameInput === void 0 ? void 0 : itemNameInput.value.trim();
     if (!name)
         return;
-    const res = yield fetch("http://localhost:3000/items", {
+    const res = yield fetch("https://web-app-prac.onrender.com/items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: Date.now(), name })
