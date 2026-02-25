@@ -21,6 +21,8 @@ searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener
     const data = yield readBooks();
     const keyword = (_a = searchInput === null || searchInput === void 0 ? void 0 : searchInput.value) !== null && _a !== void 0 ? _a : "";
     const filteredBooks = data.filter(book => book.title.includes(keyword));
+    if (bookList)
+        bookList.innerHTML = "";
     filteredBooks.forEach(book => {
         const card = document.createElement("div");
         card.className = "result-card";
