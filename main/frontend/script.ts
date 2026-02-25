@@ -1,24 +1,27 @@
 interface Book {
   title: string;
-  bowwor_stud: string;
+  borrow_stud: string;
   avail: boolean;
   id: number;
 }
 
-const addBtn = document.querySelector<HTMLInputElement>("#view");
+const searchBtn = document.querySelector<HTMLButtonElement>("#searchBut");
+const searchInput = document.querySelector<HTMLInputElement>("#bookName");
+const keyword = searchInput?.value ?? "";
 const bookList = document.querySelector<HTMLUListElement>("#bookList");
 
-const loadBooks = async () => {
+const readBooks = async (): Promise<Book[]> => {
   const res = await fetch("https://web-app-prac.onrender.com/books");
-  const items: Book[] = await res.json();
-  if (bookList) bookList.innerHTML = "";
-  items.forEach(book => {
-    const li = document.createElement("li");
-    li.textContent = `タイトル:${book.title} 在庫:${(book.avail) ? "〇" : "×"}`;
-    bookList?.appendChild(li);
-  });
+  const books: Book[] = await res.json();
+  return books;
 };
 
-addBtn?.addEventListener("click", () => {
-  loadBooks();
+searchBtn?.addEventListener("click", async () => {
+  const data = await readBooks();
+  const filteredBooks = data.filter(book => book.title.includes(keyword));
+
+  data.forEach(book => {
+    const li = document.createElement("li");
+  })
+
 });
