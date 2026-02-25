@@ -4,6 +4,8 @@ import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 import { error } from "console";
+import { json } from "stream/consumers";
+import { NONAME } from "dns";
 
 interface Book {
   title: string;
@@ -39,11 +41,25 @@ app.get("/books", (req: Request, res: Response) => {
 });
 
 app.post("/books", (req: Request, res: Response) => {
-  const data = readData();
-  const newBook: Book = req.body;
-  data.push(newBook);
-  writeData(data);
-  res.json({ status: "ok", book: newBook });
+  const books = readData();
+
+  const { title } = req.body;
+
+  if (!title) return res.status(400).json({ message: "title is required" });
+
+  const maxId = books.length > 0 ? Math.max(...books.map((book) => book.id)) : 0;
+
+  const newBook = {
+    id: maxId + 1,
+    title,
+    borrow_stud: "None",
+    avail: true
+  };
+
+  books.push(newBook);
+  writeData(books);
+
+  res.status(201).json(newBook);
 });
 
 app.patch("/books/:id", (req: Request, res: Response) => {

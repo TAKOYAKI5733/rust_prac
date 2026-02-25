@@ -25,11 +25,20 @@ app.get("/books", (req, res) => {
     res.json(data);
 });
 app.post("/books", (req, res) => {
-    const data = readData();
-    const newBook = req.body;
-    data.push(newBook);
-    writeData(data);
-    res.json({ status: "ok", book: newBook });
+    const books = readData();
+    const { title } = req.body;
+    if (!title)
+        return res.status(400).json({ message: "title is required" });
+    const maxId = books.length > 0 ? Math.max(...books.map((book) => book.id)) : 0;
+    const newBook = {
+        id: maxId + 1,
+        title,
+        borrow_stud: "None",
+        avail: true
+    };
+    books.push(newBook);
+    writeData(books);
+    res.status(201).json(newBook);
 });
 app.patch("/books/:id", (req, res) => {
     const id = Number(req.params.id);
