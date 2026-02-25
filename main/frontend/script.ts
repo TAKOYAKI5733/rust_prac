@@ -5,19 +5,17 @@ interface Book {
   id: number;
 }
 
-const itemNameInput = document.querySelector<HTMLInputElement>("#itemName");
-const itemAuthorInput = document.querySelector<HTMLInputElement>("#itemAuthor");
-const addBtn = document.querySelector<HTMLButtonElement>("#addBtn");
-const itemList = document.querySelector<HTMLUListElement>("#itemList");
+const addBtn = document.querySelector<HTMLInputElement>("#view");
+const bookList = document.querySelector<HTMLUListElement>("#bookList");
 
 const loadBooks = async () => {
-  const res = await fetch("https://web-app-prac.onrender.com/items");
+  const res = await fetch("https://web-app-prac.onrender.com/books");
   const items: Book[] = await res.json();
-  if (itemList) itemList.innerHTML = "";
+  if (bookList) bookList.innerHTML = "";
   items.forEach(book => {
     const li = document.createElement("li");
     li.textContent = `タイトル:${book.title} 在庫:${(book.avail) ? "〇" : "×"}`;
-    itemList?.appendChild(li);
+    bookList?.appendChild(li);
   });
 };
 
