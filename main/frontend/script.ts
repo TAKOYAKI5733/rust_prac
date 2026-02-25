@@ -73,7 +73,7 @@ searchBtn?.addEventListener("click", async () => {
 
     button?.addEventListener("click", async () => {
       if (!book.avail) {
-        alert("この本は貸出中です");
+        alert(`この本は${book.borrow_stud}に貸出中です`);
         return;
       }
 

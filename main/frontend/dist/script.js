@@ -56,7 +56,7 @@ searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener
         card.className = "result-card";
         card.innerHTML = `
       <h3>${book.title}</h3>
-      <p${(book.avail) ? ' style="color: red;"' : 'style="color: blue;"'}>${(book.avail) ? "〇" : "×"}</p>
+      <p${(book.avail) ? ' style="color: red;"' : ' style="color: blue;"'}>${(book.avail) ? "〇" : "×"}</p>
     `;
         const button = document.createElement("button");
         button.textContent = "借りる";
@@ -64,7 +64,7 @@ searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener
         button_return.textContent = "返却";
         button === null || button === void 0 ? void 0 : button.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
             if (!book.avail) {
-                alert("この本は貸出中です");
+                alert(`この本は${book.borrow_stud}に貸出中です`);
                 return;
             }
             const name = prompt("あなたの名前を入力してください");
