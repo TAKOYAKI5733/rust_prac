@@ -20,8 +20,10 @@ searchBtn?.addEventListener("click", async () => {
   const data = await readBooks();
   const filteredBooks = data.filter(book => book.title.includes(keyword));
 
+  if (bookList) bookList.innerHTML = "";
   data.forEach(book => {
     const li = document.createElement("li");
-  })
-
+    li.textContent = `タイトル:${book.title} 在庫:${(book.avail) ? "〇" : "×"}`;
+    bookList?.appendChild(li);
+  });
 });
