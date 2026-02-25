@@ -39,9 +39,10 @@ body{
 #searchBut{
     padding: 0.8svw;
     margin-left: 1svw;
+    border-radius: 5px;
     color: white;
     background-color: rgb(49, 97, 255);
-    border-radius: 5px;
+   
 
 }
 /*終了*/
@@ -61,6 +62,10 @@ body{
 }
 
 .result-card{
+    padding: 1dvw;
+    margin: 1dvw;
+    width: 25svw;
+    background-color: rgba(60, 184, 186, 0.638);
     
 }
 
