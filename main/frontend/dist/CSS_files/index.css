@@ -120,12 +120,16 @@ footer {
 
 }
 
+.result-card p{
+    float: left;
+}
+
 .result-card button{
+    padding: 1px;
     margin-bottom: 0.2dvw;
     float: right;
     border-radius: 5px;
-    border: solid white;
-    color: white;
+    color: whitesmoke;
     background-color: rgb(49, 97, 255);    
 }
 
