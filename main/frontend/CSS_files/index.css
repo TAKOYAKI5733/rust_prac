@@ -27,13 +27,13 @@ body{
 /*検索カード*/
 .search{
     margin: 3svw;
-    padding: 4%;
+    padding: 4dvw;
     border-radius: 20px;
     background-color: rgb(255, 237, 36)
 }
 
 #bookName{
-    padding: 1svw 40svw 1svw 1svw;
+    padding: 1svw 40dvw 1svw 1dvw;
 }
 
 #searchBut{
@@ -53,10 +53,11 @@ body{
 
 /*検索結果カード*/
 .result{
-    background-color: white;
+    margin: 3svw;
+    padding: 4dvw;
+    background-color: rgb(255, 242, 105);
     border-radius: 20px;
-    padding: 1%;
-    margin: 5svw;
+   
 }
 
 .result-card{
