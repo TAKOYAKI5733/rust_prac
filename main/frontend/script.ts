@@ -7,7 +7,6 @@ interface Book {
 
 const searchBtn = document.querySelector<HTMLButtonElement>("#searchBut");
 const searchInput = document.querySelector<HTMLInputElement>("#bookName");
-const keyword = searchInput?.value ?? "";
 const bookList = document.querySelector<HTMLUListElement>("#bookList");
 
 const readBooks = async (): Promise<Book[]> => {
@@ -18,10 +17,11 @@ const readBooks = async (): Promise<Book[]> => {
 
 searchBtn?.addEventListener("click", async () => {
   const data = await readBooks();
+  const keyword = searchInput?.value ?? "";
   const filteredBooks = data.filter(book => book.title.includes(keyword));
 
   if (bookList) bookList.innerHTML = "";
-  data.forEach(book => {
+  filteredBooks.forEach(book => {
     const li = document.createElement("li");
     li.textContent = `タイトル:${book.title} 在庫:${(book.avail) ? "〇" : "×"}`;
     bookList?.appendChild(li);
