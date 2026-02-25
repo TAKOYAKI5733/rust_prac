@@ -8,10 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var _a;
 const searchBtn = document.querySelector("#searchBut");
 const searchInput = document.querySelector("#bookName");
-const keyword = (_a = searchInput === null || searchInput === void 0 ? void 0 : searchInput.value) !== null && _a !== void 0 ? _a : "";
 const bookList = document.querySelector("#bookList");
 const readBooks = () => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch("https://web-app-prac.onrender.com/books");
@@ -19,11 +17,13 @@ const readBooks = () => __awaiter(void 0, void 0, void 0, function* () {
     return books;
 });
 searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     const data = yield readBooks();
+    const keyword = (_a = searchInput === null || searchInput === void 0 ? void 0 : searchInput.value) !== null && _a !== void 0 ? _a : "";
     const filteredBooks = data.filter(book => book.title.includes(keyword));
     if (bookList)
         bookList.innerHTML = "";
-    data.forEach(book => {
+    filteredBooks.forEach(book => {
         const li = document.createElement("li");
         li.textContent = `タイトル:${book.title} 在庫:${(book.avail) ? "〇" : "×"}`;
         bookList === null || bookList === void 0 ? void 0 : bookList.appendChild(li);
