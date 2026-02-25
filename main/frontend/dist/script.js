@@ -30,6 +30,20 @@ const borrowBook = (id, name) => __awaiter(void 0, void 0, void 0, function* () 
     alert("貸出完了");
     searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.click();
 });
+const returnBooks = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    yield fetch(`https://web-app-prac.onrender.com/books/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            borrow_stud: "",
+            avail: true
+        })
+    });
+    alert("返却完了");
+    searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.click();
+});
 searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const data = yield readBooks();
@@ -46,6 +60,8 @@ searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener
     `;
         const button = document.createElement("button");
         button.textContent = "借りる";
+        const button_return = document.createElement("button");
+        button_return.textContent = "返却";
         button === null || button === void 0 ? void 0 : button.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
             if (!book.avail) {
                 alert("この本は貸出中です");
@@ -55,6 +71,13 @@ searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener
             if (!name)
                 return;
             yield borrowBook(book.id, name);
+        }));
+        button_return === null || button_return === void 0 ? void 0 : button_return.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
+            if (book.avail) {
+                alert("この本は既に返却されています");
+                return;
+            }
+            yield returnBooks(book.id);
         }));
         bookList === null || bookList === void 0 ? void 0 : bookList.appendChild(card);
         card.appendChild(button);

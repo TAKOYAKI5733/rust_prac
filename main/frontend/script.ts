@@ -32,6 +32,23 @@ const borrowBook = async (id: number, name: string) => {
   searchBtn?.click();
 }
 
+const returnBooks = async (id: number) => {
+  await fetch(`https://web-app-prac.onrender.com/books/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      borrow_stud: "",
+      avail: true
+    })
+  });
+
+  alert("返却完了");
+
+  searchBtn?.click();
+}
+
 searchBtn?.addEventListener("click", async () => {
   const data = await readBooks();
   const keyword = searchInput?.value ?? "";
@@ -51,6 +68,9 @@ searchBtn?.addEventListener("click", async () => {
     const button = document.createElement("button");
     button.textContent = "借りる";
 
+    const button_return = document.createElement("button");
+    button_return.textContent = "返却";
+
     button?.addEventListener("click", async () => {
       if (!book.avail) {
         alert("この本は貸出中です");
@@ -62,6 +82,15 @@ searchBtn?.addEventListener("click", async () => {
 
       await borrowBook(book.id, name);
     });
+
+    button_return?.addEventListener("click", async () => {
+      if (book.avail) {
+        alert("この本は既に返却されています");
+        return;
+      }
+
+      await returnBooks(book.id);
+    })
 
     bookList?.appendChild(card);
     card.appendChild(button);
