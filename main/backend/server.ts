@@ -23,7 +23,9 @@ const readData = (): Book[] => {
 };
 
 const writeData = (data: Book[]) => {
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+  console.log("Writing to:", DATA_FILE);
+  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), "utf-8");
+  console.log("Write complete");
 };
 
 const app = express();
@@ -55,17 +57,6 @@ app.patch("/books/:id", (req: Request, res: Response) => {
   data[index] = { ...data[index], ...req.body };
   writeData(data);
   res.json({ status: "ok", book: data[index] });
-});
-
-app.delete("/books/:id", (req: Request, res: Response) => {
-  const id = Number(req.params.id);
-  if (isNaN(id)) return res.status(400).json({ error: "Invalid id" });
-
-  let data = readData();
-  const exists = data.some(book => book.id === id);
-  if (!exists) return res.status(404).json({ error: "Not found" });
-  writeData(data);
-  res.json({ status: "ok" });
 });
 
 const PORT = 3000;
