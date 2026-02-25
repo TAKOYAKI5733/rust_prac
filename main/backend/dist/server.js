@@ -29,7 +29,7 @@ app.post("/books", (req, res) => {
     writeData(data);
     res.json({ status: "ok", book: newBook });
 });
-app.put("/books/:id", (req, res) => {
+app.patch("/books/:id", (req, res) => {
     const id = Number(req.params.id);
     if (isNaN(id))
         return res.status(400).json({ error: "Invalid id" });
@@ -41,9 +41,9 @@ app.put("/books/:id", (req, res) => {
     writeData(data);
     res.json({ status: "ok", book: data[index] });
 });
-app.delete("/item/:id", (req, res) => {
+app.delete("/books/:id", (req, res) => {
     const id = Number(req.params.id);
-    if (!isNaN(id))
+    if (isNaN(id))
         return res.status(400).json({ error: "Invalid id" });
     let data = readData();
     const exists = data.some(book => book.id === id);
