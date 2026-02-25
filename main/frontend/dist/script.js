@@ -28,7 +28,6 @@ searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener
         card.className = "result-card";
         card.innerHTML = `
       <h3>${book.title}</h3>
-      <p>${(book.avail) ? "〇" : "×"}</p>
       <button>借りる</button>
     `;
         bookList === null || bookList === void 0 ? void 0 : bookList.appendChild(card);
