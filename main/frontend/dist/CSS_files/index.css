@@ -86,7 +86,6 @@ footer{
 .result{
     margin: 3svw;
     padding: 4dvw;
-    float: left;
     background-color: #F3FF90;
     border-radius: 20px;
    
@@ -96,6 +95,7 @@ footer{
     padding: 1dvw;
     margin: 1dvw;
     width: 25svw;
+    float: left;
     border-radius: 2svw;
     background-color: #99ec006c;
     box-shadow: 0 4px 6px gray;/*??*/
