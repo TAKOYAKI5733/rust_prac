@@ -28,6 +28,7 @@ searchBtn?.addEventListener("click", async () => {
 
     card.innerHTML = `
       <h3>${book.title}</h3>
+      <p>${(book.avail) ? "〇" : "×"}</p>
       <button>借りる</button>
     `;
 
