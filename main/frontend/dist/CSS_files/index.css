@@ -132,8 +132,8 @@ footer {
 }
 
 .result-card button{
-    padding: 1px;
-    margin-bottom: 0.2dvw;
+    padding: 3px;
+    margin: 0 0.2dvw 0.2dvw 0.2dvw;
     float: right;
     border-radius: 5px;
     color: whitesmoke;
