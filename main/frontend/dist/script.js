@@ -8,19 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const itemNameInput = document.querySelector("#itemName");
-const itemAuthorInput = document.querySelector("#itemAuthor");
-const addBtn = document.querySelector("#addBtn");
-const itemList = document.querySelector("#itemList");
+const addBtn = document.querySelector("#view");
+const bookList = document.querySelector("#bookList");
 const loadBooks = () => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield fetch("https://web-app-prac.onrender.com/items");
+    const res = yield fetch("https://web-app-prac.onrender.com/books");
     const items = yield res.json();
-    if (itemList)
-        itemList.innerHTML = "";
+    if (bookList)
+        bookList.innerHTML = "";
     items.forEach(book => {
         const li = document.createElement("li");
         li.textContent = `タイトル:${book.title} 在庫:${(book.avail) ? "〇" : "×"}`;
-        itemList === null || itemList === void 0 ? void 0 : itemList.appendChild(li);
+        bookList === null || bookList === void 0 ? void 0 : bookList.appendChild(li);
     });
 });
 addBtn === null || addBtn === void 0 ? void 0 : addBtn.addEventListener("click", () => {
