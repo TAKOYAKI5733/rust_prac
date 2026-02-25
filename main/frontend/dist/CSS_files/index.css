@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
     margin: 0px;
     padding: 0px;
@@ -103,6 +105,11 @@ footer {
     background-color: #F3FF90;
     border-radius: 20px;
     clear: left;
+
+}
+
+.result:hover{
+    display: block;
 }
 
 /*本の個別情報*/
@@ -131,10 +138,13 @@ footer {
     border-radius: 5px;
     color: whitesmoke;
     background-color: rgb(49, 97, 255);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: scale(1.02);
+    transition: transform 0.3s ease;
+    
 }
 
+.result-card button:hover{
+    transform: scale(1.1);
+}
 
 /*検索結果カード終了*/
 
