@@ -57,12 +57,14 @@ footer {
 
 /*検索カード*/
 .search {
-    margin: 3svw;
+    margin: 1svw;
     padding: 0px;
     background-color: #F3FF90
 }
 
+/*検索ボックス*/
 .searchBox {
+    margin: 1dvw;
     padding: 0px 4dvw 4dvw 4dvw;
 }
 
@@ -96,17 +98,19 @@ footer {
 
 /*検索結果カード*/
 .result {
-    margin: 3svw;
-    padding: 4dvw;
+    margin: 1svw;
+    padding: 3dvw;
     background-color: #F3FF90;
     border-radius: 20px;
     clear: left;
 }
 
+/*本の個別情報*/
 .result-card {
     padding: 1dvw;
     margin: 1dvw;
-    width: 25svw;
+    height: 15svh;
+    width: 35svw;
     float: left;
     border-radius: 2svw;
     background-color: #99ec006c;
@@ -115,6 +119,16 @@ footer {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 }
+
+.result-card button{
+    margin-bottom: 0.2dvw;
+    float: right;
+    border-radius: 5px;
+    border: solid white;
+    color: white;
+    background-color: rgb(49, 97, 255);    
+}
+
 
 /*検索結果カード終了*/
 
