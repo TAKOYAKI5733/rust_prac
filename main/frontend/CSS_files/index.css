@@ -1,3 +1,9 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    /*border何とか*/
+}
+
 h1{
     background-color: lightseagreen;
     color: aliceblue;
@@ -13,14 +19,30 @@ h1{
 }
 
 body{
-    background-color:lemonchiffon;
+    background-color:rgb(255, 253, 236);
 }
 
 
 
 /*検索カード*/
 .search{
-    padding: ;
-    margin: ;
+    margin: 10%;
+    padding: 4%;
+    border-radius: 20px;
     background-color: rgb(255, 237, 36)
 }
+/*終了*/
+
+.kennsakukekka{
+    padding: 0px;
+    margin: 0px;
+}
+
+/*検索結果カード*/
+.result{
+    background-color: white;
+    border-radius: 20px;
+    padding: 1% 8%;
+    margin: 5%;
+}
+
