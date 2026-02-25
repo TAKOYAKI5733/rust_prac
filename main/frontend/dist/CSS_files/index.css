@@ -4,11 +4,6 @@
     /*border何とか*/
 }
 
-h1{
-    background-color: #059212;
-    color: aliceblue;
-    font-family: Arial, Helvetica, sans-serif;
-}
 
 /*関数化的なもの*/
 .underline{
@@ -20,9 +15,33 @@ h1{
 
 body{
     background-color:white;
+    display: flex;           /* フレックスコンテナにする */
+    flex-direction: column;  /* 縦方向に要素を配置 */
+    min-height: 100vh;
 }
 
+header {
+    padding: 1rem;
+    /* flexの初期値により、必要な分だけ高さを取る */
+    background-color: #059212;
+    color: aliceblue;
+}
 
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main{
+    flex: 1;                /* 残りのスペースをすべて占有 */
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+footer{
+    padding: 1svw;
+    text-align: center;
+    background-color: gainsboro;
+}
 
 /*検索カード*/
 .search{
@@ -49,7 +68,7 @@ body{
     border-radius: 5px;
     color: white;
     background-color: rgb(49, 97, 255);
-   
+    cursor: pointer;
 
 }
 
@@ -80,6 +99,7 @@ body{
     background-color: #99ec006c;
     box-shadow: 0 4px 6px gray;/*??*/
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
+    
 }
 /*検索結果カード終了*/
+

@@ -10,34 +10,41 @@
 </head>
 
 <body>
-    <div class="header">
+    <header>
         <h1>電工部蔵書検索ツール</h1>
         <p class="lettersmall">作成日:2026/02/25</p>
-    </div>
+    </header>
 
-    <div class="search">
-        <h2 id="kennsakuH2">検索</h2>
-        <div class="searchBox">
-            <p>電工部が所有する本を検索することができます。</p>
-            <label for="bookName"></label>
-            <input type="text" id="bookName" placeholder="検索...">
-            <button id="searchBut">検索</button>
-        </div>
-        <div class="tags">
-            //////////*途中*/
-        </div>
-    </div>
-
-    <div class="result">
-        <h2 id="kennsakukekkaH2">検索結果</h2>
-        <div class="result-card">
-            <h3>ここにタイトル</h3>
-            <p>ここに在庫</p>
+    <main>
+        <div class="search">
+            <h2 id="kennsakuH2">検索</h2>
+            <div class="searchBox">
+                <p>電工部が所有する本を検索することができます。</p>
+                <label for="bookName"></label>
+                <input type="text" id="bookName" placeholder="検索...">
+                <button id="searchBut">検索</button>
+            </div>
+            <div class="tags">
+                //////////*途中*/
+            </div>
         </div>
 
-        <ul id="bookLlist"></ul>
+        <div class="result">
+            <h2 id="kennsakukekkaH2">検索結果</h2>
+            <div class="result-card">
+                <h3>ここにタイトル</h3>
+                <p>ここに在庫</p>
+                <button>借りる</button>
+            </div>
 
-    </div>
+            <ul id="bookLlist"></ul>
+
+        </div>
+    </main>
+
+    
+    <footer>
+        <p>&copy;2026 TAKOYAKI & xinag All rights reserved.</p>
 
     <script src="script.js"></script>
 
