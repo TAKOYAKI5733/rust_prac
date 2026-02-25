@@ -4,19 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOM PRAC</title>
+    <title>電工部蔵書検索ツール</title>
+    <link rel="stylesheet" href="CSS_files/index.css">
+
 </head>
 
 <body>
-    <h1>アイテム管理アプリ</h1>
+    <div class="header">
+        <h1>電工部蔵書検索ツール</h1>
+        <p class="lettersmall">作成日:2026/02/25</p>
+    </div>
 
-    <h2>本一覧</h2>
+    <div class="search">
+        <h2>検索</h2>
+        <p>電工部が所有する本を検索することができます。</p>
+        <input type="text" id="bookName">
+        <label for="bookName"><button>検索</button></label>
+        <div class="tags">
+        </div>
 
-    <button id="view">閲覧</button>
+        <div>
+            <h2>おすすめの本</h2>
+            <h3></h3>
 
-    <ul id="bookList"></ul>
+        </div>
 
-    <script src="script.js"></script>
+
+
 </body>
 
 </html>
