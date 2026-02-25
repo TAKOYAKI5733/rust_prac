@@ -16,6 +16,20 @@ const readBooks = () => __awaiter(void 0, void 0, void 0, function* () {
     const books = yield res.json();
     return books;
 });
+const borrowBook = (id, name) => __awaiter(void 0, void 0, void 0, function* () {
+    yield fetch(`https://web-app-prac.onrender.com/books/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            borrow_stud: name,
+            avail: false
+        })
+    });
+    alert("貸出完了");
+    searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.click();
+});
 searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const data = yield readBooks();
@@ -29,8 +43,20 @@ searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener
         card.innerHTML = `
       <h3>${book.title}</h3>
       <p${(book.avail) ? ' style="color: red;"' : ''}>${(book.avail) ? "〇" : "×"}</p>
-      <button>借りる</button>
     `;
+        const button = document.createElement("button");
+        button.textContent = "借りる";
+        button === null || button === void 0 ? void 0 : button.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
+            if (!book.avail) {
+                alert("この本は貸出中です");
+                return;
+            }
+            const name = prompt("あなたの名前を入力してください");
+            if (!name)
+                return;
+            yield borrowBook(book.id, name);
+        }));
         bookList === null || bookList === void 0 ? void 0 : bookList.appendChild(card);
+        card.appendChild(button);
     });
 }));
