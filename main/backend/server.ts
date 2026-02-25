@@ -40,28 +40,6 @@ app.get("/books", (req: Request, res: Response) => {
   res.json(data);
 });
 
-app.post("/books", (req: Request, res: Response) => {
-  const books = readData();
-
-  const { title } = req.body;
-
-  if (!title) return res.status(400).json({ message: "title is required" });
-
-  const maxId = books.length > 0 ? Math.max(...books.map((book) => book.id)) : 0;
-
-  const newBook = {
-    id: maxId + 1,
-    title,
-    borrow_stud: "None",
-    avail: true
-  };
-
-  books.push(newBook);
-  writeData(books);
-
-  res.status(201).json(newBook);
-});
-
 app.patch("/books/:id", (req: Request, res: Response) => {
   const id = Number(req.params.id);
   if (isNaN(id)) return res.status(400).json({ error: "Invalid id" });
