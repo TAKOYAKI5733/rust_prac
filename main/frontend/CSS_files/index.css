@@ -26,10 +26,23 @@ body{
 
 /*検索カード*/
 .search{
-    margin: 10%;
+    margin: 3svw;
     padding: 4%;
     border-radius: 20px;
     background-color: rgb(255, 237, 36)
+}
+
+#bookName{
+    padding: 1svw 40svw 1svw 1svw;
+}
+
+#searchBut{
+    padding: 0.8svw;
+    margin-left: 1svw;
+    color: white;
+    background-color: rgb(49, 97, 255);
+    border-radius: 5px;
+
 }
 /*終了*/
 
@@ -42,7 +55,11 @@ body{
 .result{
     background-color: white;
     border-radius: 20px;
-    padding: 1% 8%;
-    margin: 5%;
+    padding: 1%;
+    margin: 5svw;
+}
+
+.result-card{
+    
 }
 
