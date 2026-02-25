@@ -13,7 +13,9 @@
 .lettersmall {
     font-size: 12px;
 }
+/*関数化終了*/
 
+/*主要要素*/
 body {
     background-color: white;
     display: flex;
@@ -46,6 +48,12 @@ footer {
     text-align: center;
     background-color: gainsboro;
 }
+
+.flex-container{
+    display: flex;
+}
+/*主要要素終了*/
+
 
 /*検索カード*/
 .search {
@@ -92,6 +100,7 @@ footer {
     padding: 4dvw;
     background-color: #F3FF90;
     border-radius: 20px;
+    clear: left;
 }
 
 .result-card {
@@ -108,3 +117,4 @@ footer {
 }
 
 /*検索結果カード終了*/
+
