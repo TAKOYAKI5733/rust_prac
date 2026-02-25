@@ -1,7 +1,8 @@
-interface Item {
+interface Book {
+  title: string;
+  bowwor_stud: string;
+  avail: boolean;
   id: number;
-  name: string;
-  author: string;
 }
 
 const itemNameInput = document.querySelector<HTMLInputElement>("#itemName");
@@ -9,29 +10,17 @@ const itemAuthorInput = document.querySelector<HTMLInputElement>("#itemAuthor");
 const addBtn = document.querySelector<HTMLButtonElement>("#addBtn");
 const itemList = document.querySelector<HTMLUListElement>("#itemList");
 
-const loadItems = async () => {
+const loadBooks = async () => {
   const res = await fetch("https://web-app-prac.onrender.com/items");
-  const items: Item[] = await res.json();
+  const items: Book[] = await res.json();
   if (itemList) itemList.innerHTML = "";
-  items.forEach(item => {
+  items.forEach(book => {
     const li = document.createElement("li");
-    li.textContent = `タイトル:${item.name} 著者:${item.author}`;
+    li.textContent = `タイトル:${book.title} 在庫:${(book.avail) ? "〇" : "×"}`;
     itemList?.appendChild(li);
   });
 };
 
-addBtn?.addEventListener("click", async () => {
-  const name = itemNameInput?.value.trim();
-  const author = itemAuthorInput?.value.trim();
-  if (!name || !author) return;
-  const res = await fetch("https://web-app-prac.onrender.com/items", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ id: Date.now(), name, author })
-  });
-  const result = await res.json();
-  if (itemNameInput) itemNameInput.value = "";
-  loadItems();
+addBtn?.addEventListener("click", () => {
+  loadBooks();
 });
-
-loadItems();

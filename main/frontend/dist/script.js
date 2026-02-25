@@ -12,30 +12,17 @@ const itemNameInput = document.querySelector("#itemName");
 const itemAuthorInput = document.querySelector("#itemAuthor");
 const addBtn = document.querySelector("#addBtn");
 const itemList = document.querySelector("#itemList");
-const loadItems = () => __awaiter(void 0, void 0, void 0, function* () {
+const loadBooks = () => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield fetch("https://web-app-prac.onrender.com/items");
     const items = yield res.json();
     if (itemList)
         itemList.innerHTML = "";
-    items.forEach(item => {
+    items.forEach(book => {
         const li = document.createElement("li");
-        li.textContent = `タイトル:${item.name} 著者:${item.author}`;
+        li.textContent = `タイトル:${book.title} 在庫:${(book.avail) ? "〇" : "×"}`;
         itemList === null || itemList === void 0 ? void 0 : itemList.appendChild(li);
     });
 });
-addBtn === null || addBtn === void 0 ? void 0 : addBtn.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
-    const name = itemNameInput === null || itemNameInput === void 0 ? void 0 : itemNameInput.value.trim();
-    const author = itemAuthorInput === null || itemAuthorInput === void 0 ? void 0 : itemAuthorInput.value.trim();
-    if (!name || !author)
-        return;
-    const res = yield fetch("https://web-app-prac.onrender.com/items", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: Date.now(), name, author })
-    });
-    const result = yield res.json();
-    if (itemNameInput)
-        itemNameInput.value = "";
-    loadItems();
-}));
-loadItems();
+addBtn === null || addBtn === void 0 ? void 0 : addBtn.addEventListener("click", () => {
+    loadBooks();
+});

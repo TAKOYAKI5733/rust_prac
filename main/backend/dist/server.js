@@ -1,7 +1,7 @@
 import express from "express";
 import fs from "fs";
-import path from "path";
 import cors from "cors";
+import path from "path";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,38 +18,37 @@ const writeData = (data) => {
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.get("/items", (req, res) => {
+app.get("/books", (req, res) => {
     const data = readData();
     res.json(data);
 });
-app.post("/items", (req, res) => {
+app.post("/books", (req, res) => {
     const data = readData();
-    const newItem = req.body;
-    data.push(newItem);
+    const newBook = req.body;
+    data.push(newBook);
     writeData(data);
-    res.json({ status: "ok", item: newItem });
+    res.json({ status: "ok", book: newBook });
 });
-app.put("/items/:id", (req, res) => {
+app.put("/books/:id", (req, res) => {
     const id = Number(req.params.id);
     if (isNaN(id))
         return res.status(400).json({ error: "Invalid id" });
     const data = readData();
-    const index = data.findIndex(item => item.id === id);
+    const index = data.findIndex(book => book.id === id);
     if (index === -1)
         return res.status(404).json({ error: "Not found" });
     data[index] = { ...data[index], ...req.body };
     writeData(data);
-    res.json({ status: "ok", item: data[index] });
+    res.json({ status: "ok", book: data[index] });
 });
-app.delete("/items/:id", (req, res) => {
+app.delete("/item/:id", (req, res) => {
     const id = Number(req.params.id);
-    if (isNaN(id))
+    if (!isNaN(id))
         return res.status(400).json({ error: "Invalid id" });
     let data = readData();
-    const exists = data.some(item => item.id === id);
+    const exists = data.some(book => book.id === id);
     if (!exists)
         return res.status(404).json({ error: "Not found" });
-    data = data.filter(item => item.id !== id);
     writeData(data);
     res.json({ status: "ok" });
 });
