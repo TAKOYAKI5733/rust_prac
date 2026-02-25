@@ -7,7 +7,7 @@ interface Book {
 
 const searchBtn = document.querySelector<HTMLButtonElement>("#searchBut");
 const searchInput = document.querySelector<HTMLInputElement>("#bookName");
-const bookList = document.querySelector<HTMLUListElement>("#bookList");
+const bookList = document.querySelector<HTMLDivElement>("#result");
 
 const readBooks = async (): Promise<Book[]> => {
   const res = await fetch("https://web-app-prac.onrender.com/books");
@@ -20,10 +20,17 @@ searchBtn?.addEventListener("click", async () => {
   const keyword = searchInput?.value ?? "";
   const filteredBooks = data.filter(book => book.title.includes(keyword));
 
-  if (bookList) bookList.innerHTML = "";
+
   filteredBooks.forEach(book => {
-    const li = document.createElement("li");
-    li.textContent = `タイトル:${book.title} 在庫:${(book.avail) ? "〇" : "×"}`;
-    bookList?.appendChild(li);
+    const card = document.createElement("div");
+    card.className = "result-card";
+
+    card.innerHTML = `
+      <h3>${book.title}</h3>
+      <p>${(book.avail) ? "〇" : "×"}</p>
+      <button>借りる</button>
+    `;
+
+    bookList?.appendChild(card);
   });
 });
