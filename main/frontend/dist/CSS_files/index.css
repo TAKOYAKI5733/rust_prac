@@ -110,7 +110,7 @@ footer {
     padding: 1dvw;
     margin: 1dvw;
     height: 15svh;
-    width: 35svw;
+    width: 36svw;
     float: left;
     border-radius: 2svw;
     background-color: #99ec006c;
@@ -130,7 +130,9 @@ footer {
     float: right;
     border-radius: 5px;
     color: whitesmoke;
-    background-color: rgb(49, 97, 255);    
+    background-color: rgb(49, 97, 255);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.02);
 }
 
 
