@@ -14,7 +14,7 @@ interface Book {
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DATA_FILE = path.join(__dirname, "DB.json");
+const DATA_FILE = path.resolve("DB.json");
 
 const readData = (): Book[] => {
   if (!fs.existsSync(DATA_FILE)) return [];
