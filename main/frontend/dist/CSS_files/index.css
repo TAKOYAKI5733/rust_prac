@@ -86,6 +86,7 @@ footer{
 .result{
     margin: 3svw;
     padding: 4dvw;
+    float: left;
     background-color: #F3FF90;
     border-radius: 20px;
    
