@@ -56,7 +56,7 @@ searchBtn === null || searchBtn === void 0 ? void 0 : searchBtn.addEventListener
         card.className = "result-card";
         card.innerHTML = `
       <h3>${book.title}</h3>
-      <p${(book.avail) ? ' style="color: red;"' : ''}>${(book.avail) ? "〇" : "×"}</p>
+      <p${(book.avail) ? ' style="color: red;"' : 'style="color: blue;"'}>${(book.avail) ? "〇" : "×"}</p>
     `;
         const button = document.createElement("button");
         button.textContent = "借りる";
