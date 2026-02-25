@@ -20,7 +20,7 @@ searchBtn?.addEventListener("click", async () => {
   const keyword = searchInput?.value ?? "";
   const filteredBooks = data.filter(book => book.title.includes(keyword));
 
-  if (bookList) bookList.innerHTML = "";
+  if (bookList) bookList.innerHTML = '';
 
   filteredBooks.forEach(book => {
     const card = document.createElement("div");
